@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="Src/style.css" />
+    <title>Weather App</title>
+  </head>
+
+  <body>
+    <div class="weather-app">
+      <header>
+        <form>
+          <input
+            type="search"
+            placeholder="Enter a city.."
+            required
+            class="search-input"
+          />
+          <input type="submit" value="Search" class="search-button" />
+        </form>
+      </header>
+
+      <main>
+        <div class="current-weather">
+          <div>
+            <h1 class="current-city">Paris</h1>
+
+            <p class="current-details">
+              Saturday 15:32, moderate rain <br />
+              Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>
+            </p>
+          </div>
+
+          <div class="temperature-today">
+            <span class="temperature-icon">☀️</span>
+            <span class="current-temperature">14</span>
+            <span class="celsius">°C</span>
+          </div>
+        </div>
+
+        <ul class="forecast-weather">
+          <li>
+            Sun 🌤️
+            <br />
+            <strong>14°C</strong>
+            - 18°C
+          </li>
+          <li>
+            Mon 🌤️
+            <br />
+            <strong>14°C</strong>
+            - 18°C
+          </li>
+          <li>
+            Tue 🌤️
+            <br />
+            <strong>14°C</strong>
+            - 18°C
+          </li>
+          <li>
+            Wed 🌤️
+            <br />
+            <strong>14°C</strong>
+            - 18°C
+          </li>
+          <li>
+            Thu 🌤️
+            <br />
+            <strong>14°C</strong>
+            - 18°C
+          </li>
+        </ul>
+      </main>
+
+      <footer>
+        <p>
+          This project was coded by
+          <a href="#" target="_blank">Ronja Pieroth</a> and is
+          <a href="#" target="_blank"> on GitHub</a> and
+          <a href="#" target="_blank">hosted on Netlify</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
