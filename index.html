@@ -9,18 +9,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="Src/style.css" />
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
-    <title>Weather App</title>
+    <title>My weather application</title>
   </head>
 
   <body>
     <div class="weather-app">
       <header>
-        <form>
+        <form id="search-form">
           <input
             type="search"
             placeholder="Enter a city.."
             required
             class="search-input"
+            id="search-input"
           />
           <input type="submit" value="Search" class="search-button" />
         </form>
@@ -29,18 +30,18 @@
       <main>
         <div class="current-weather">
           <div>
-            <h1 class="current-city">Paris</h1>
+            <h1 class="current-city" id="current-city">Paris</h1>
 
             <p class="current-details">
-              Saturday 15:32, moderate rain <br />
+              <span id="current-date"></span>, moderate rain <br />
               Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>
             </p>
           </div>
 
-          <div class="temperature-today">
-            <span class="temperature-icon">☀️</span>
-            <span class="current-temperature">14</span>
-            <span class="celsius">°C</span>
+          <div class="current-temperature">
+            <span class="current-temperature-icon">☀️</span>
+            <span class="current-temperature-value">14</span>
+            <span class="current-temperature-unit">°C</span>
           </div>
         </div>
 
@@ -92,5 +93,6 @@
         </p>
       </footer>
     </div>
+    <script src="Src/index.js"></script>
   </body>
 </html>
