@@ -90,28 +90,37 @@ function formatDate(date) {
   return `${formattedDay} ${hours}:${minutes}`;
 }
 
-function updateTemperature(response) {
+function updateWeather(response) {
   let temperatureElement = document.querySelector(".current-temperature-value");
-  let currentTemperature = Math.round(response.data.temperature.current);
+  let currentTemperature = response.data.temperature.current;
   console.log(currentTemperature);
   let cityElement = document.querySelector("#current-city");
+  let conditionElement = document.querySelector("#current-condition");
+  let humidityElement = document.querySelector("#current-humidity");
+  let windElement = document.querySelector("#current-wind-speed");
+  let currentDateELement = document.querySelector("#current-date");
+  let currentDate = new Date(response.data.time * 1000);
   cityElement.innerHTML = response.data.city;
-  temperatureElement.innerHTML = currentTemperature;
+  temperatureElement.innerHTML = Math.round(currentTemperature);
+  conditionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  windElement.innerHTML = `${response.data.wind.speed}km/h`;
+  currentDateELement.innerHTML = formatDate(currentDate);
 }
 
-function searchCity(event) {
-  event.preventDefault();
-  let city = document.querySelector("#search-input");
+function searchCity(city) {
   let apiKey = "3bo5e90a574b223f7cd8fteb0eb46b33";
-  const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city.value}&key=${apiKey}&unit=metrics`;
-  axios.get(apiUrl).then(updateTemperature);
+  const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&unit=metrics`;
+  axios.get(apiUrl).then(updateWeather);
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", searchCity);
-
-let currentDateELement = document.querySelector("#current-date");
-let currentDate = new Date();
-currentDateELement.innerHTML = formatDate(currentDate);
+function handleSearchSubmit(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-input");
+  searchCity(searchInput.value);
+}
 
 searchCity("Berlin");
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSearchSubmit);
