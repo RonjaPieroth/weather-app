@@ -88,9 +88,9 @@ footer {
 
 .current-temperature-icon {
   position: relative;
-  top: -8px;
-  font-size: 40px;
-  margin-right: 10px;
+  top: 15px;
+  width: 88px;
+  height: 88px;
 }
 
 .current-temperature-value {

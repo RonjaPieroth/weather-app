@@ -63,6 +63,26 @@
 
 // // write your code here
 
+function updateWeather(response) {
+  let temperatureElement = document.querySelector(".current-temperature-value");
+  let currentTemperature = response.data.temperature.current;
+  console.log(currentTemperature);
+  let cityElement = document.querySelector("#current-city");
+  let conditionElement = document.querySelector("#current-condition");
+  let humidityElement = document.querySelector("#current-humidity");
+  let windElement = document.querySelector("#current-wind-speed");
+  let currentDateELement = document.querySelector("#current-date");
+  let currentDate = new Date(response.data.time * 1000);
+  let iconElement = document.querySelector("#icon");
+  cityElement.innerHTML = response.data.city;
+  temperatureElement.innerHTML = Math.round(currentTemperature);
+  conditionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  windElement.innerHTML = `${response.data.wind.speed}km/h`;
+  currentDateELement.innerHTML = formatDate(currentDate);
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="current-temperature-icon" />`;
+}
+
 function formatDate(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
@@ -88,24 +108,6 @@ function formatDate(date) {
 
   let formattedDay = days[day];
   return `${formattedDay} ${hours}:${minutes}`;
-}
-
-function updateWeather(response) {
-  let temperatureElement = document.querySelector(".current-temperature-value");
-  let currentTemperature = response.data.temperature.current;
-  console.log(currentTemperature);
-  let cityElement = document.querySelector("#current-city");
-  let conditionElement = document.querySelector("#current-condition");
-  let humidityElement = document.querySelector("#current-humidity");
-  let windElement = document.querySelector("#current-wind-speed");
-  let currentDateELement = document.querySelector("#current-date");
-  let currentDate = new Date(response.data.time * 1000);
-  cityElement.innerHTML = response.data.city;
-  temperatureElement.innerHTML = Math.round(currentTemperature);
-  conditionElement.innerHTML = response.data.condition.description;
-  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
-  windElement.innerHTML = `${response.data.wind.speed}km/h`;
-  currentDateELement.innerHTML = formatDate(currentDate);
 }
 
 function searchCity(city) {
